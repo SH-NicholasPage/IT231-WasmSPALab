@@ -1,0 +1,7 @@
+BlazorApp/.vs/*
+BlazorApp/BlazorApp/Client/bin/*
+BlazorApp/BlazorApp/Server/bin/*
+BlazorApp/BlazorApp/Shared/bin/*
+BlazorApp/BlazorApp/Client/obj/*
+BlazorApp/BlazorApp/Server/obj/*
+BlazorApp/BlazorApp/Shared/obj/*
