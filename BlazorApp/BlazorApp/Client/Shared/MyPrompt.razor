@@ -1,0 +1,30 @@
+﻿<div class="alert alert-secondary mt-4">
+    <span class="oi oi-arrow-circle-right me-2" aria-hidden="true"></span>
+    <strong>@Title</strong>
+
+    <span class="text-nowrap">
+        This an example of a component that takes an argument.
+    </span>
+
+    <br />
+    <button class="btn btn-primary" @onclick="DisplayHappy">I like Blazor!</button>
+
+    <button class="btn btn-primary" @onclick="DisplaySad">I don't like Blazor!</button>
+    <br />
+
+    @if(Happy == true)
+    {
+        <span>:)</span>
+    }
+    else if(Happy == false)
+    {
+        <span>:(</span>
+    }
+</div>
+
+@code 
+{
+    //Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public String? Title { get; set; }
+}

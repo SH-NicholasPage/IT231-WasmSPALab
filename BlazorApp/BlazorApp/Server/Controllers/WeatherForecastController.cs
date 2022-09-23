@@ -3,32 +3,41 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorApp.Server.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        private const int NUM_OF_DAYS_IN_FORECAST = 5;
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private static readonly String[] Summaries = new[]
+        {
+            "Freezing", "Chilly", "Cool", "Mild", "Warm", "Hot", "Sweltering", "Scorching"
+        };
+
+        private ILogger<WeatherForecastController> Logger { get; }
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
-            _logger = logger;
+            Logger = logger;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public List<WeatherForecast> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            List<WeatherForecast> forecast = new List<WeatherForecast>();
+
+            for(int i = 0; i < NUM_OF_DAYS_IN_FORECAST; i++)
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                forecast.Add(new WeatherForecast
+                {
+                    Date = DateTime.Now.AddDays(i + 1),
+                    TemperatureC = Random.Shared.Next(-20, 55),
+                    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                });
+            }
+
+            return forecast;
         }
     }
 }
