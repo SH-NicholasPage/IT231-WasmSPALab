@@ -7,18 +7,18 @@
     </span>
 
     <br />
-    <button class="btn btn-primary" @onclick="DisplayHappy">I like Blazor!</button>
+    <button class="btn btn-primary" @onclick="() => Happy = true">I like Blazor!</button>
 
-    <button class="btn btn-primary" @onclick="DisplaySad">I don't like Blazor!</button>
+    <button class="btn btn-primary" @onclick="() => Happy = false">I don't like Blazor!</button>
     <br />
 
     @if(Happy == true)
     {
-        <span>:)</span>
+        <div>😃</div>
     }
-    else if(Happy == false)
+    else if(Happy == false)//Happy is nullable
     {
-        <span>:(</span>
+        <div>😔</div>
     }
 </div>
 

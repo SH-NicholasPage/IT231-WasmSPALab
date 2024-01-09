@@ -10,7 +10,7 @@ namespace BlazorApp.Server.Controllers
     {
         private const int NUM_OF_DAYS_IN_FORECAST = 5;
 
-        private static readonly String[] Summaries = new[]
+        private static readonly String[] Summaries =
         {
             "Freezing", "Chilly", "Cool", "Mild", "Warm", "Hot", "Sweltering", "Scorching"
         };
@@ -25,7 +25,7 @@ namespace BlazorApp.Server.Controllers
         [HttpGet]
         public List<WeatherForecast> Get()
         {
-            List<WeatherForecast> forecast = new List<WeatherForecast>();
+            List<WeatherForecast> forecast = [];
 
             for(int i = 0; i < NUM_OF_DAYS_IN_FORECAST; i++)
             {
